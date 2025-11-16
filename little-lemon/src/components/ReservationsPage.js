@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 
 function ReservationsPage() {
   const [reservationDate, setReservationDate] = useState('');
+  const [date, setDate] = useState('');
   const [reservationTime, setReservationTime] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [occasion, setOccasion] = useState('');
   const [guests, setGuests] = useState(1);
+  const [occasion, setOccasion] = useState('');
 
   const handleIncrement = () => {
     setGuests(prev => prev + 1);
@@ -19,11 +21,11 @@ function ReservationsPage() {
 
   const DatePicker = ({ selectedDate, onDateChange }) => {
     const today = new Date().toISOString().split('T')[0];
-    
+
     return (
       <div className="date-picker">
         <label htmlFor="reservation-date">Select Date</label>
-        <input 
+        <input
           type="date"
           id="reservation-date"
           value={selectedDate}
@@ -36,7 +38,7 @@ function ReservationsPage() {
   };
 
   const handleReserve = () => {
-    alert(`Reservation confirmed for ${reservationTime}!\nName: ${name}\nPhone: ${phone}\nEmail: ${email}`);
+    alert(`Reservation confirmed for ${date} at ${reservationTime}!\n We look forward to you dining with us!`);
   };
 
   return (
@@ -46,10 +48,22 @@ function ReservationsPage() {
       </div>
       
       <div className="reservation-form">
-        
+
+        <h4>Date</h4>
+        <div className="form-group">
+          <input
+            type="date"
+            id="reservation-date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+            min={new Date().toISOString().split('T')[0]}
+          />
+        </div>
+
         <div className="date-section">
           <h4>Date</h4>
-          <DatePicker 
+          <DatePicker
             selectedDate={reservationDate}
             onDateChange={setReservationDate}
           />
@@ -112,7 +126,22 @@ function ReservationsPage() {
           </div>
         </div>
 
-        
+        <div className="form-group">
+          <h4>Occasion</h4>
+          <select
+            id="occasion"
+            value={occasion}
+            onChange={(e) => setOccasion(e.target.value)}
+            className="form-input"
+          >
+            <option value="">Select an occasion</option>
+            <option value="Birthday">Birthday</option>
+            <option value="Anniversary">Anniversary</option>
+            <option value="Engagement">Business Dinner</option>
+            <option value="Family Gathering">Family Gathering</option>
+          </select>
+        </div>
+
         <div className="personal-information">
           <h4>Personal Information</h4>
           <div className="form-group">
@@ -142,16 +171,6 @@ function ReservationsPage() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="occasion">Occasion</label>
-            <input 
-              type="text" 
-              id="occasion" 
-              value={occasion}
-              onChange={(e) => setOccasion(e.target.value)}
-            />
-          </div>
-
         </div>
         
         <button className="reserve-button" onClick={handleReserve}>Reserve</button>

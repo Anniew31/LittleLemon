@@ -9,6 +9,7 @@ body {
 
 * {
   font-family: inherit;
+  box-sizing: border-box;
 }
 
 header {
@@ -183,6 +184,17 @@ header {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-family: 'Karla', sans-serif;
+  background-color: white;
+  margin-bottom: 1rem;
+}
+
 .time-section, .personal-information {
   margin-bottom: 20px;
 }
@@ -241,6 +253,7 @@ header {
   text-align: center;
 }
 .form-group {
+  margin-bottom: .75rem;
   margin-bottom: 1rem;
   margin-right:5rem;
   margin-left:5rem;
