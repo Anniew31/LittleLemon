@@ -61,14 +61,6 @@ function ReservationsPage() {
           />
         </div>
 
-        <div className="date-section">
-          <h4>Date</h4>
-          <DatePicker
-            selectedDate={reservationDate}
-            onDateChange={setReservationDate}
-          />
-        </div>
-
         <div className="time-section">
           <h4>Time</h4>
           <div className="time-option">
